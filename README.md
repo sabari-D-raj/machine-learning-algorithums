@@ -49,6 +49,37 @@ $$
 
 Here, `x_bar` and `y_bar` are the mean values of `x` and `y`.
 
+### Error Metrics
+
+Error metrics measure how closely the model's predictions match the actual
+target values. Lower values indicate better predictions.
+
+#### Mean Squared Error (MSE)
+
+Mean Squared Error is the average of the squared differences between the
+actual values and the predicted values. Squaring the errors gives more weight
+to larger errors.
+
+$$
+\mathrm{MSE} = \frac{1}{n}\sum_{i=1}^{n}(y_i - \hat{y}_i)^2
+$$
+
+#### Mean Absolute Error (MAE)
+
+Mean Absolute Error is the average of the absolute differences between the
+actual values and the predicted values. It represents the average prediction
+error in the same units as the target.
+
+$$
+\mathrm{MAE} = \frac{1}{n}\sum_{i=1}^{n}\left|y_i - \hat{y}_i\right|
+$$
+
+Where:
+
+- `n` is the number of observations
+- `y_i` is the actual value
+- `y_hat_i` is the predicted value
+
 ### Example Data
 
 The example uses `linearregression/data.csv`:
