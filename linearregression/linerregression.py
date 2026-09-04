@@ -14,11 +14,18 @@ y_mean=sum(y)/len(y)
 numerator=sum((xi-x_mean)*(yi-y_mean)for xi,yi in zip(x,y))
 denominator=sum((xi-x_mean)**2 for xi in x)
 slopeb1=numerator/denominator
-interceptb1=y_mean-slopeb1*x_mean
-Y_pred=slopeb1*x+interceptb1
+interceptb0=y_mean-slopeb1*x_mean
+Y_pred=slopeb1*x+interceptb0
 house_size=int(input("enter the house size:"))
-predicted_price=slopeb1*house_size+interceptb1
+predicted_price=slopeb1*house_size+interceptb0
+print("------house price----")
 print(f"{predicted_price:.2f} lakhs")
+error=y-Y_pred
+mse=sum(error**2)/len(y)
+mae=abs(error)/len(y)
+print("-----error-----")
+print(f"mse={mse:.2f}")
+print(f"mae={mae}")
 plt.scatter(x,y)
 plt.plot(x,Y_pred)
 plt.xlabel("house price")
