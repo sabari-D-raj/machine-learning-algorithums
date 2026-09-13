@@ -116,3 +116,85 @@ predicted price and displays a scatter plot with the fitted regression line.
 	approximately linear.
 - The dataset is very small and is intended for learning, not real-world price
 	estimation.
+
+## Polynomial Regression
+
+### Definition
+
+Polynomial regression is a supervised machine learning algorithm used when the
+relationship between the input variable and the target is nonlinear. Instead of
+fitting a straight line, it fits a polynomial curve to the data.
+
+In this project:
+
+- **Feature (`x`)**: hours studied
+- **Target (`y`)**: exam score
+- **Prediction (`y_hat`)**: estimated exam score for a given number of study
+  hours
+
+### Equation
+
+A second-degree polynomial regression model is represented as:
+
+$$
+\hat{y} = b_0 + b_1x + b_2x^2
+$$
+
+Where:
+
+- `y_hat` is the predicted value
+- `b_0` is the intercept
+- `b_1` is the coefficient for the linear term
+- `b_2` is the coefficient for the squared term
+- `x` is the input feature
+
+This project computes the coefficients using a least-squares approach with a
+design matrix:
+
+$$
+M = \begin{bmatrix}
+1 & x_1 & x_1^2 \\
+1 & x_2 & x_2^2 \\
+\vdots & \vdots & \vdots \\
+1 & x_n & x_n^2
+\end{bmatrix}
+$$
+
+and solves:
+
+$$
+\beta = (M^TM)^{-1}M^Ty
+$$
+
+### Example Data
+
+The example uses `polynomialregression/data.csv`:
+
+| Hours studied | Exam score |
+| -------------: | ---------: |
+| 1              | 35         |
+| 2              | 40         |
+| 3              | 55         |
+| 4              | 70         |
+| 5              | 80         |
+| 6              | 90         |
+
+### How to Run
+
+Run the example from the repository root:
+
+```bash
+python polynomialregression/polynomialregression.py
+```
+
+When prompted, enter the number of study hours. The program prints the
+estimated exam score and displays a scatter plot of the original data with the
+polynomial curve fitted to it.
+
+### Limitations
+
+- This example uses a simple quadratic model.
+- More complex relationships may require a higher-degree polynomial or a
+  different algorithm.
+- The dataset is small and intended for learning rather than production-grade
+  prediction.
